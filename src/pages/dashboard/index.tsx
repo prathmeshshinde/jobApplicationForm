@@ -152,6 +152,7 @@ const NewForm = () => {
                 questions.length === 0 ? "opacity-50 cursor-not-allowed" : ""
               }`}
               type="submit"
+              disabled={questions.length === 0 && true}
             >
               <Image src="/check.svg" alt="publish" width={16} height={16} />
               Publish form
