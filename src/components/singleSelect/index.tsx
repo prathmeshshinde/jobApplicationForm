@@ -1,4 +1,4 @@
-import { Question } from "@/models";
+import { Question, QuestionOptionsState } from "@/models";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
@@ -6,21 +6,22 @@ interface SingleSelectProps {
   data: Question;
   setQuestions: React.Dispatch<React.SetStateAction<Question[]>>;
 }
+
 const SingleSelect: React.FC<SingleSelectProps> = ({ data, setQuestions }) => {
-  const [questionOptions, setQuestionOptions] = useState<{
-    [key: string]: string[];
-  }>({});
+  const [questionOptions, setQuestionOptions] = useState<QuestionOptionsState>(
+    {}
+  );
 
   const handleAddOption = (
     questionType: string,
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
     event.preventDefault();
-    setQuestionOptions((prev: any) => {
+    setQuestionOptions((prev) => {
       const currentOptions = prev[questionType] || [];
       const newOptionId =
         currentOptions.length > 0
-          ? Math.max(...currentOptions?.map((opt: any) => opt?.id)) + 1
+          ? Math.max(...currentOptions?.map((opt) => opt?.id)) + 1
           : 1;
 
       return {
@@ -31,7 +32,7 @@ const SingleSelect: React.FC<SingleSelectProps> = ({ data, setQuestions }) => {
   };
 
   const ensureInitialOption = (questionType: string) => {
-    setQuestionOptions((prev: any) => {
+    setQuestionOptions((prev) => {
       if (!prev[questionType] || prev[questionType].length === 0) {
         return {
           ...prev,
@@ -45,19 +46,18 @@ const SingleSelect: React.FC<SingleSelectProps> = ({ data, setQuestions }) => {
   const handleOptionChange = (
     questionType: string,
     optionId: number,
-    newValue: string,
-    index: number
+    newValue: string
   ) => {
     setQuestionOptions((prev) => {
       const currentOptions = prev[questionType] || [];
       return {
         ...prev,
-        [questionType]: currentOptions.map((opt: any) =>
+        [questionType]: currentOptions.map((opt) =>
           opt.id === optionId ? { ...opt, value: newValue } : opt
         ),
       };
     });
-    const updatedOptions = questionOptions.singleSelect.map((opt: any) =>
+    const updatedOptions = questionOptions?.singleSelect?.map((opt) =>
       opt.id === optionId ? { ...opt, value: newValue } : opt
     );
     setQuestions((prevQuestions) =>
@@ -73,13 +73,11 @@ const SingleSelect: React.FC<SingleSelectProps> = ({ data, setQuestions }) => {
     ensureInitialOption(data?.type);
   }, []);
 
-  // if (data?.type !== "singleSelect") return <></>;
-
   return (
     <div>
       <div className="mt-2">
         <div className="flex flex-col gap-2">
-          {questionOptions[data.type]?.map((option: any, index) => (
+          {questionOptions[data.type]?.map((option, index) => (
             <div key={option.id} className="flex gap-2">
               <label className="w-full flex gap-2">
                 <input
@@ -90,14 +88,9 @@ const SingleSelect: React.FC<SingleSelectProps> = ({ data, setQuestions }) => {
                 <input
                   type="text"
                   placeholder={`Option ${index + 1}`}
-                  value={option.value}
+                  value={option?.value}
                   onChange={(e) =>
-                    handleOptionChange(
-                      data.type,
-                      option.id,
-                      e.target.value,
-                      index
-                    )
+                    handleOptionChange(data.type, option?.id, e.target.value)
                   }
                   className="w-full border-2 py-[3px] px-[6px] text-base font-medium text-[#0D0D0D] placeholder:text-[#959DA5] placeholder:text-sm placeholder:font-normal border-[#E1E4E8] rounded-lg focus:outline-none bg-[#F6F8FA] group-hover:bg-[#FAFBFC] transition-all duration-300 "
                 />

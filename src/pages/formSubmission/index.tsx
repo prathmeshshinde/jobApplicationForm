@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/router";
 import { Question } from "@/models";
 import { Progress } from "@radix-ui/themes";
@@ -14,9 +14,12 @@ const FormSubmission = () => {
   const [completenessPercentage, setCompletenessPercentage] =
     useState<number>(0);
   const router = useRouter();
-  const questions: Question[] = router.query.questions
-    ? JSON.parse(router?.query?.questions as string)
-    : [];
+
+  const questions: Question[] = useMemo(() => {
+    return router.query.questions
+      ? JSON.parse(router?.query?.questions as string)
+      : [];
+  }, [router.query.questions]);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -73,7 +76,7 @@ const FormSubmission = () => {
             </div>
             <div className="w-full p-6 relative">
               {questions?.map((item) => (
-                <div className="rounded-2xl mb-8">
+                <div key={item.id} className="rounded-2xl mb-8">
                   <div className="flex justify-between items-center mb-2">
                     <label
                       className="text-[#0D0D0D] text-sm font-semibold"

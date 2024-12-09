@@ -12,3 +12,12 @@ export interface InputProps {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
 }
+
+interface Option {
+  id: number;
+  value: string;
+}
+
+export interface QuestionOptionsState {
+  [key: string]: Option[];
+}

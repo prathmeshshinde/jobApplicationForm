@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Question } from "@/models";
+import Image from "next/image";
 
 interface DropdownProps {
   setQuestions: React.Dispatch<React.SetStateAction<Question[]>>;
@@ -96,9 +97,9 @@ const Dropdown: React.FC<DropdownProps> = ({
             <li className="bg-[#FAFBFC] text-xs text-[#6A737D] font-semibold p-3 rounded-lg">
               INPUT TYPES
             </li>
-            {INPUT_TYPES.map((inputType) => (
+            {INPUT_TYPES.map((inputType, index) => (
               <li
-                key={inputType.type}
+                key={`${inputType.type + index}`}
                 onClick={() =>
                   handleAddQuestion(inputType.type, inputType.defaultLabel)
                 }
@@ -107,7 +108,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                 role="button"
                 aria-label={`Add ${inputType.label} question`}
               >
-                <img
+                <Image
                   src={inputType?.icon}
                   alt={inputType.label}
                   width={20}
