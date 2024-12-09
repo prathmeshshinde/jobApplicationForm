@@ -71,7 +71,7 @@ const SingleSelect: React.FC<SingleSelectProps> = ({ data, setQuestions }) => {
 
   useEffect(() => {
     ensureInitialOption(data?.type);
-  }, []);
+  }, [data?.type]);
 
   return (
     <div>
