@@ -4,7 +4,6 @@ import SingleSelect from "../singleSelect";
 import { INPUT_TYPES } from "../dropdown";
 import { Question } from "@/models";
 import { useSortable } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
 import ShortAnswersInput from "../shortAnswerInput";
 import LongAnswerInput from "../longAnswerInput";
 import UrlInput from "../urlInput";
@@ -29,8 +28,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   setQuestions,
   id,
 }) => {
-  const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({ id });
+  const { attributes, listeners, setNodeRef, transform } = useSortable({ id });
 
   const style = transform
     ? {
