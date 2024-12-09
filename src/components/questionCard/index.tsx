@@ -129,6 +129,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
             </DropdownMenu.Content>
           </DropdownMenu.Root>
           <Image
+            className="max-[1024px]:hidden"
             src="/dragIcon.svg"
             alt="Short Answer"
             width={24}

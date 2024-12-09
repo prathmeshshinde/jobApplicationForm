@@ -153,7 +153,7 @@ const NewForm = () => {
               }`}
               type="submit"
             >
-              <Image src="/check.svg" alt="draft" width={16} height={16} />
+              <Image src="/check.svg" alt="publish" width={16} height={16} />
               Publish form
             </button>
           </div>
