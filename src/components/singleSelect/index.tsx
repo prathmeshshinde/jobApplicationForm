@@ -64,7 +64,7 @@ const SingleSelect: React.FC<SingleSelectProps> = ({ data, setQuestions }) => {
       prevQuestions.map((question) =>
         question.id === data.id
           ? { ...question, options: updatedOptions }
-          : { ...question, options: [{ id: 1, value: "hel" }] }
+          : { ...question }
       )
     );
   };

@@ -1,13 +1,17 @@
 import { InputProps } from "@/models";
 import React from "react";
 
-const LongAnswerInput: React.FC<InputProps> = ({ item, handleInputChange }) => {
+const LongAnswerInput: React.FC<InputProps> = ({
+  item,
+  handleInputChange,
+  name,
+}) => {
   return (
     <>
       {item?.type === "longAns" && (
         <textarea
           id={item.type}
-          name={item.type}
+          name={name ? name : item.type}
           onChange={handleInputChange}
           placeholder="We Would love to hear more."
           disabled={!handleInputChange && true}

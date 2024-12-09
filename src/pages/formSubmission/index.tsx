@@ -88,19 +88,27 @@ const FormSubmission = () => {
                   <ShortAnswersInput
                     item={item}
                     handleInputChange={handleInputChange}
+                    name={`shortAnswer-${item.id}`}
                   />
                   <LongAnswerInput
                     item={item}
                     handleInputChange={handleInputChange}
+                    name={`longAnswer-${item.id}`}
                   />
-                  <UrlInput item={item} handleInputChange={handleInputChange} />
+                  <UrlInput
+                    item={item}
+                    handleInputChange={handleInputChange}
+                    name={`url-${item.id}`}
+                  />
                   <DateInput
                     item={item}
                     handleInputChange={handleInputChange}
+                    name={`date-${item.id}`}
                   />
                   <NumberInput
                     item={item}
                     handleInputChange={handleInputChange}
+                    name={`number-${item.id}`}
                   />
                   {item?.type === "singleSelect" && (
                     <div className="flex flex-col gap-2">

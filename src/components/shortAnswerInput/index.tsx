@@ -4,6 +4,7 @@ import React from "react";
 const ShortAnswersInput: React.FC<InputProps> = ({
   item,
   handleInputChange,
+  name,
 }) => {
   return (
     <>
@@ -11,7 +12,7 @@ const ShortAnswersInput: React.FC<InputProps> = ({
         <input
           id={item.type}
           type="text"
-          name={item.type}
+          name={name ? name : item.type}
           onChange={handleInputChange}
           placeholder="We Would love to hear more"
           disabled={!handleInputChange && true}

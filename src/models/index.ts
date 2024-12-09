@@ -11,6 +11,7 @@ export interface InputProps {
   handleInputChange?: (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
+  name?: string;
 }
 
 interface Option {

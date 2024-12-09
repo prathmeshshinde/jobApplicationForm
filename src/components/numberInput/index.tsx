@@ -1,14 +1,18 @@
 import { InputProps } from "@/models";
 import React from "react";
 
-const NumberInput: React.FC<InputProps> = ({ item, handleInputChange }) => {
+const NumberInput: React.FC<InputProps> = ({
+  item,
+  handleInputChange,
+  name,
+}) => {
   return (
     <>
       {item?.type === "number" && (
         <input
           id={item.type}
           type="number"
-          name={item.type}
+          name={name ? name : item.type}
           placeholder="23"
           onChange={handleInputChange}
           disabled={!handleInputChange && true}

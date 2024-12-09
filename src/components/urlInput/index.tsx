@@ -1,14 +1,14 @@
 import { InputProps } from "@/models";
 import React from "react";
 
-const UrlInput: React.FC<InputProps> = ({ item, handleInputChange }) => {
+const UrlInput: React.FC<InputProps> = ({ item, handleInputChange, name }) => {
   return (
     <>
       {item?.type === "url" && (
         <input
           id={item.type}
           type="url"
-          name={item.type}
+          name={name ? name : item.type}
           placeholder="URL"
           disabled={!handleInputChange && true}
           onChange={handleInputChange}
