@@ -1,6 +1,13 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+## Job Application Form
 
-## Getting Started
+[Vercel Link](https://nextjs.org)
+
+# Desciption
+1. Added one more type of input field (i.e. date).
+2. Used [react-hot-toast](https://react-hot-toast.com/docs) for success and error toasts.
+3. Used @dnd-kit/core for drag and drop functionality. On mobile drag and drop is not visible
+4. There are two main pages Dashboard and SubmitForm page. I broke down everything else into smaller components to improve reusability.
+
 
 First, run the development server:
 
