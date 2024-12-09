@@ -32,10 +32,13 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id });
 
-  const style = {
-    transform: CSS.Transform.toString(transform),
-    transition,
-  };
+  const style = transform
+    ? {
+        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+        zIndex: 4,
+        cursor: "grabbing",
+      }
+    : undefined;
 
   const updateInputType = (
     index: number,
@@ -58,7 +61,6 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   return (
     <div
       style={style}
-      ref={setNodeRef}
       className="border-2 border-[#E1E4E8] rounded-2xl p-3 my-4 hover:bg-[#FAFBFC] transition-all duration-300 group"
     >
       <div className="flex justify-between items-center mb-2">
@@ -129,11 +131,12 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
             </DropdownMenu.Content>
           </DropdownMenu.Root>
           <Image
-            className="max-[1024px]:hidden"
+            className="max-[1024px]:hidden cursor-grab"
             src="/dragIcon.svg"
             alt="Short Answer"
             width={24}
             height={24}
+            ref={setNodeRef}
             {...attributes}
             {...listeners}
           />
