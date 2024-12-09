@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import "@radix-ui/themes/styles.css";
 import type { AppProps } from "next/app";
-import { Inter } from "@next/font/google";
+import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import { Theme } from "@radix-ui/themes";
 
